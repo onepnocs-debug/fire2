@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<title>Air Conditioner Maintenance Management System</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="back-home">
+
+    <a href="https://onepnocs-debug.github.io/may-24/">
+
+        ⚓ BACK TO PNOCS SAFETY WEBSITE
+
+    </a>
+
+</div>
+
+<!-- MAIN SYSTEM -->
+
+<div id="mainSystem">
+
+
+<!-- HEADER -->
+<div class="card" style="margin-bottom:20px;">
+
+    <h1>
+        ❄ Air Conditioner Maintenance Management System
+    </h1>
+
+    <p style="text-align:center;color:#64748b;">
+        Monitor Air Conditioning Units, Maintenance Records,
+        Inspections and Equipment Status
+    </p>
+
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard">
+
+    <div class="card">
+        <h3>Total Records</h3>
+        <span id="totalRecords">0</span>
+    </div>
+
+    <div class="card">
+        <h3>Equipment Monitoring</h3>
+        <span>❄</span>
+    </div>
+
+    <div class="card">
+        <h3>System Status</h3>
+        <span>ONLINE</span>
+    </div>
+
+    <div class="card">
+
+    <button onclick="logout()">
+        Logout
+    </button>
+
+    <br><br>
+
+    <button
+        id="adminBtn"
+        onclick="showAdminLogin()">
+
+        Run as Administrator
+
+    </button>
+
+</div>
+
+</div>
+
+<!-- FORM -->
+<div class="form-container">
+
+    <input
+        id="personnel"
+        placeholder="Personnel In Charge">
+
+    <input
+        id="brand"
+        placeholder="Brand">
+
+   
+
+    <input
+        id="serialNumber"
+        placeholder="Serial Number">
+
+    <input
+        id="location"
+        placeholder="Location">
+
+    <input
+        id="inspectionDate"
+        type="date">
+
+    <input
+        id="inspector"
+        placeholder="Inspector">
+
+    <input
+        type="file"
+        id="photo"
+        accept="image/*">
+
+    <select id="status">
+        <option>Good</option>
+        <option>Needs Repair</option>
+        <option>Under Maintenance</option>
+    </select>
+
+    <textarea
+        id="remarks"
+        placeholder="Remarks">
+    </textarea>
+
+    <button onclick="saveRecord()">
+        Save Record
+    </button>
+
+</div>
+
+<!-- ACTIONS -->
+<div class="actions">
+
+    <input
+        id="search"
+        placeholder="Search records..."
+        onkeyup="loadRecords()">
+
+    <button onclick="exportPDF()">
+        Export PDF
+    </button>
+
+    <button onclick="exportCSV()">
+        Export CSV
+    </button>
+
+    <button onclick="window.print()">
+        Print
+    </button>
+
+</div>
+
+<!-- TABLE -->
+<div class="table-container">
+
+    <table>
+
+        <thead>
+
+           <tr>
+    <th>Date</th>
+    <th>Inspector</th>
+    <th>Status</th>
+    <th>Person In Charge</th>
+    <th>Location</th>
+    <th>Brand</th>
+    <th>Serial Number</th>
+    <th>Photo</th>
+    <th>Remarks</th>
+    <th>Actions</th>
+</tr>
+
+        </thead>
+
+        <tbody id="recordsTable">
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<!-- FOOTER -->
+<div
+    style="
+    text-align:center;
+    margin-top:25px;
+    color:#64748b;
+    ">
+
+    © 2026 Air Conditioner Maintenance Management System
+
+</div>
+
+</div>
+
+<!-- IMAGE VIEWER -->
+
+<div id="imageModal" class="modal">
+
+    <span class="close">&times;</span>
+
+    <img
+        class="modal-content"
+        id="fullImage">
+
+</div>
+
+    <div id="adminModal" class="modal">
+
+    <div
+        style="
+        background:white;
+        max-width:400px;
+        margin:120px auto;
+        padding:25px;
+        border-radius:15px;
+        ">
+
+        <h2 style="margin-bottom:15px;">
+            Run as Administrator
+        </h2>
+
+        <input
+            id="adminUsername"
+            placeholder="Username">
+
+        <br><br>
+
+        <input
+            type="password"
+            id="adminPassword"
+            placeholder="Password">
+
+        <br><br>
+
+        <button onclick="adminLogin()">
+            Login
+        </button>
+
+        <button
+            onclick="closeAdminLogin()"
+            style="background:#64748b;">
+
+            Cancel
+
+        </button>
+
+    </div>
+
+</div>
+
+<script type="module" src="app.js"></script>
+
+</body>
+</html>
