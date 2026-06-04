@@ -75,7 +75,7 @@ async function saveData(photoData) {
     };
 
    await addDoc(
-    collection(db, "airconRecords"),
+    collection(db, "fire2"),
     record
 );
 
@@ -158,7 +158,7 @@ async function loadRecords() {
     records = [];
 
     const snapshot = await getDocs(
-        collection(db, "airconRecords")
+        collection(db, "fire2")
     );
 
     snapshot.forEach((docSnap) => {
@@ -275,7 +275,7 @@ async function deleteRecord(index) {
     if (confirm("Delete this record?")) {
 
         await deleteDoc(
-            doc(db, "airconRecords", records[index].id)
+            doc(db, "fire2", records[index].id)
         );
 
         loadRecords();
